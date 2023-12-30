@@ -7,7 +7,8 @@ KERNEL_OUT=build/xdos.bin
 ISO_OUT=build/unidos.iso
 
 all: build
-build: clean	mkdir -p build
+build: clean	
+	mkdir -p build
 	nasm -f elf32 ${BOOT} -o build/boot.o
 	gcc -m32 -ffreestanding -c ${KERNEL} -o build/kernel.o
 	ld -m elf_i386 -T ${LINKER} -o ${KERNEL_OUT} build/boot.o build/kernel.o
